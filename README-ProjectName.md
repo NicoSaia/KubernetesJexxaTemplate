@@ -2,7 +2,7 @@
 
 *   Refactor/Rename file `JexxaTemplate.java` into `<ProjektName>.java` within your IDE
 
-*   Refactor/Rename the GroupId (directory) `io.jexxa.jexxatemplate` into `com.github.<your-github-account>` for example within your IDE
+*   Refactor/Rename the GroupId (directory) `io.jexxa.kubernetesjexxatemplate` into `com.github.<your-github-account>` for example within your IDE
 
 *   Adjust all sections marked with TODO (and remove TODO statement) in : 
     *    [pom.xml](pom.xml) 

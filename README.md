@@ -15,12 +15,12 @@ This template can be used to start your own Jexxa application
 
 *   Build your first Jexxa-project as self-contained jar and/or docker image
     
-*   Template for [Unit-](src/test/java/io/jexxa/jexxatemplate/domain/book/BookTest.java), [Stub-](src/test/java/io/jexxa/jexxatemplate/applicationservice/BookStoreServiceTest.java) and [Integration tests](src/test/java/io/jexxa/jexxatemplate/integration/JexxaTemplateIT.java)
+*   Template for [Unit-](src/test/java/io/jexxa/kubernetesjexxatemplate/domain/book/BookTest.java), [Stub-](src/test/java/io/jexxa/kubernetesjexxatemplate/applicationservice/BookStoreServiceTest.java) and [Integration tests](src/test/java/io/jexxa/kubernetesjexxatemplate/integration/JexxaTemplateIT.java)
 
 *   Predefined architectural tests for: 
-    *   [Pattern Language](src/test/java/io/jexxa/jexxatemplate/architecture/ArchitectureTest.java) to validate the correct annotation of your application using project [Addend](http://addend.jexxa.io/) 
-    *   [Ports&Adapters Architecture](src/test/java/io/jexxa/jexxatemplate/architecture/ArchitectureTest.java) to validates dependencies between packages of your application
-    *   [Usage of Aggregates](src/test/java/io/jexxa/jexxatemplate/architecture/ArchitectureTest.java) to validate that your business logic is not exposed
+    *   [Pattern Language](src/test/java/io/jexxa/kubernetesjexxatemplate/architecture/ArchitectureTest.java) to validate the correct annotation of your application using project [Addend](http://addend.jexxa.io/) 
+    *   [Ports&Adapters Architecture](src/test/java/io/jexxa/kubernetesjexxatemplate/architecture/ArchitectureTest.java) to validates dependencies between packages of your application
+    *   [Usage of Aggregates](src/test/java/io/jexxa/kubernetesjexxatemplate/architecture/ArchitectureTest.java) to validate that your business logic is not exposed
 
 *   Predefined CI/CD pipeline for GitHub including automatic dependency updates 
  
@@ -40,14 +40,14 @@ This template can be used to start your own Jexxa application
     ```shell
     mvn clean install -P '!integrationTests'
 
-    java -jar "-Dio.jexxa.config.import=src/test/resources/jexxa-local.properties" target/jexxatemplate-jar-with-dependencies.jar
+    java -jar "-Dio.jexxa.config.import=src/test/resources/jexxa-local.properties" target/kubernetesjexxatemplate-jar-with-dependencies.jar
     ```
 
 *   [Optional] **With** running [developer stack](deploy/developerStack.yml):
     ```shell
     mvn clean install
     
-    java -jar "-Dio.jexxa.config.import=src/test/resources/jexxa-test.properties" target/jexxatemplate-jar-with-dependencies.jar
+    java -jar "-Dio.jexxa.config.import=src/test/resources/jexxa-test.properties" target/kubernetesjexxatemplate-jar-with-dependencies.jar
     ```
 
 *   Now you can use `curl` to access your application, or open this [http://localhost:7503/BookStoreService/getBooks](http://localhost:7503/BookStoreService/getBooks) in your browser:

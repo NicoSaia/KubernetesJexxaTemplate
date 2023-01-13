@@ -55,7 +55,7 @@ In addition, it can be easily run and maintained on your developing machine.
 
 In order to deploy the stack, you can use following command from your checkout directory. 
 ```shell
-docker stack deploy --compose-file ./deploy/docker-compose.yml jexxatemplate
+docker stack deploy --compose-file ./deploy/docker-compose.yml kubernetesjexxatemplate
 ```
 
 ### Continuous Deployment 

@@ -7,9 +7,9 @@
   <!-- **************************************************************************** -->
   <!-- TODO (REQUIRED): Change your project name, groupId, artifactId, ... here.    -->
   <!-- **************************************************************************** -->
-  <name>JexxaTemplate</name>
-  <groupId>io.jexxa.jexxatemplate</groupId>
-  <artifactId>jexxatemplate</artifactId>
+  <name>KubernetesJexxaTemplate</name>
+  <groupId>io.jexxa.kubernetesjexxatemplate</groupId>
+  <artifactId>kubernetesjexxatemplate</artifactId>
   <version>2.0.16-SNAPSHOT</version>
 
   <url>https://www.jexxa.io</url>
@@ -24,7 +24,7 @@
   </licenses>
   <developers>
     <developer>
-      <name>DeveloperName</name>  <!-- TODO (REQUIRED): Change developer name.       -->
+      <name>Nico Saia</name>  <!-- TODO (REQUIRED): Change developer name.       -->
     </developer>
   </developers>
 
@@ -32,9 +32,9 @@
   <!-- TODO (REQUIRED): Change the scm section to include correct repository.       -->
   <!-- **************************************************************************** -->
   <scm>
-    <connection>scm:git:https://github.com/jexxa-projects/JexxaTemplate.git</connection>
-    <url>https://github.com/jexxa-projects/JexxaTemplate</url>
-    <developerConnection>scm:git:https://github.com/jexxa-projects/JexxaTemplate.git</developerConnection>
+    <connection>scm:git:https://github.com/NicoSaia/KubernetesJexxaTemplate.git</connection>
+    <url>https://github.com/NicoSaia/KubernetesJexxaTemplate</url>
+    <developerConnection>scm:git:https://github.com/NicoSaia/KubernetesJexxaTemplate.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
@@ -42,7 +42,7 @@
     <!-- **************************************************************************** -->
     <!-- TODO (REQUIRED): Change the repository to upload your image.                 -->
     <!-- **************************************************************************** -->
-    <image.repository.root>ghcr.io/jexxa-projects</image.repository.root>
+    <image.repository.root>ghcr.io/nicosaia</image.repository.root>
     <test.coverage.minimum>0.00</test.coverage.minimum>     <!-- Minimum Test coverage in %-->
 
     <!-- ************************************************************* -->
