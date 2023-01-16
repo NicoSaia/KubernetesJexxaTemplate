@@ -32,9 +32,9 @@
   <!-- TODO (REQUIRED): Change the scm section to include correct repository.       -->
   <!-- **************************************************************************** -->
   <scm>
-    <connection>scm:git:https://github.com/NicoSaia/${project.name}.git</connection>
-    <url>https://github.com/NicoSaia/${project.name}</url>
-    <developerConnection>scm:git:https://github.com/NicoSaia/${project.name}.git</developerConnection>
+    <connection>scm:git:https://github.com/NicoSaia/KubernetesJexxaTemplate.git</connection>
+    <url>https://github.com/NicoSaia/KubernetesJexxaTemplate</url>
+    <developerConnection>scm:git:https://github.com/NicoSaia/KubernetesJexxaTemplate.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
