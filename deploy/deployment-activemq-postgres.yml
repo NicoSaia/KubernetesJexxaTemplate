@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: activemq-postgres-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: activemq-postgres
+  template:
+    metadata:
+      labels:
+        app: activemq-postgres
+    spec:
+      containers:
+        - name: activemqkubectl
+          image: quay.io/artemiscloud/activemq-artemis-broker:latest
+          env:
+            - name: AMQ_USER
+              value: artemis
+            - name: AMQ_PASSWORD
+              value: simetraehcapa
+            - name: AMQ_EXTRA_ARGS
+              value: --relax-jolokia
+        - name: postgres
+          image: postgres:15
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_PASSWORD
+              value: admin
+            - name: POSTGRES_USER
+              value: postgres
