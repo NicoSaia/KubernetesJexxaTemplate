@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubernetesjexxatemplate
+spec:
+  restartPolicy: Always
+  volumes:
+  #- name: postgresvolume
+  #  persistentVolumeClaim:
+  #    claimName: postgresvolume
+  containers:
+    - image: ghcr.io/nicosaia/kubernetesjexxatemplate:latest
+      name: kubernetesjexxatemplate
+      ports:
+        - containerPort: 7500
+    - image: quay.io/artemiscloud/activemq-artemis-broker:latest
+      name: activemqkubectl
+      env:
+        - name: AMQ_USER
+          value: admin
+        - name: AMQ_PASSWORD
+          value: admin
+        - name: AMQ_EXTRA_ARGS
+          value: --relax-jolokia
+    - image: postgres:15
+      name: postgreskubectl
+      ports:
+        - containerPort: 5432
+      env:
+        - name: POSTGRES_PASSWORD
+          value: admin
+        - name: POSTGRES_USER
+          value: admin
+      #volumeMounts:
+      #  - mountPath: /var/lib/postgresql/data
+      #    name: postgresvolume
+
