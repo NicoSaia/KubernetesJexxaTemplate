@@ -95,3 +95,9 @@ Hier ein beispiel welches für die Adresse den Namen `(activemq-postgres-service
 io.jexxa.jdbc.autocreate.database=jdbc:postgresql://activemq-postgres-service:5432/postgres
 java.naming.provider.url=tcp://activemq-postgres-service:61616
 ```
+
+Alle Anpassungen bis zu diesem Punkt sind in der Image-Version `2.0.18` vorhanden:
+
+```bash
+docker pull ghcr.io/nicosaia/kubernetesjexxatemplate:2.0.18
+```
