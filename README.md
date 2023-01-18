@@ -1,79 +1,97 @@
-[![Maven Test Build](https://github.com/jexxa-projects/JexxaTemplate/actions/workflows/mavenBuild.yml/badge.svg)](https://github.com/jexxa-projects/JexxaTemplate/actions/workflows/mavenBuild.yml)
-[![New Release](https://github.com/jexxa-projects/JexxaTemplate/actions/workflows/newRelease.yml/badge.svg)](https://github.com/jexxa-projects/JexxaTemplate/actions/workflows/newRelease.yml)
+# Digi-Kubernetes
 
-# JexxaTemplate
-This template can be used to start your own Jexxa application 
+- [Digi-Kubernetes](#digi-kubernetes)
+  - [Digital Ocean Nodes bestellen:](#digital-ocean-nodes-bestellen)
+  - [Initiale Setup auf DigiPod um mit DigitalOcean kommunizieren zu können:](#initiale-setup-auf-digipod-um-mit-digitalocean-kommunizieren-zu-können)
+  - [Portainer installieren](#portainer-installieren)
+  - [Deployment](#deployment)
+  - [Wichtige Begriffe](#wichtige-begriffe)
+  - [Datenbanken und Kubernetes](#datenbanken-und-kubernetes)
+  - [Ausrollen einer Anwendung mit Datenbank in separaten Pods](#ausrollen-einer-anwendung-mit-datenbank-in-separaten-pods)
 
-## Requirements
 
-*   Java 17+ installed
-*   IDE with maven support 
-*   [Optional] Docker or Kubernetes if you want to run your application in a container. See [here](README-CICD.md) for more information.   
-*   [Optional] A locally running [developer stack](deploy/developerStack.yml) providing a Postgres database, ActiveMQ broker, and Swagger-UI 
+Dieses Repository dient dem sammeln von Erkenntnissen und Konfigurationen.
 
-## Features
 
-*   Build your first Jexxa-project as self-contained jar and/or docker image
-    
-*   Template for [Unit-](src/test/java/io/jexxa/kubernetesjexxatemplate/domain/book/BookTest.java), [Stub-](src/test/java/io/jexxa/kubernetesjexxatemplate/applicationservice/BookStoreServiceTest.java) and [Integration tests](src/test/java/io/jexxa/kubernetesjexxatemplate/integration/JexxaTemplateIT.java)
+## Digital Ocean Nodes bestellen:
 
-*   Predefined architectural tests for: 
-    *   [Pattern Language](src/test/java/io/jexxa/kubernetesjexxatemplate/architecture/ArchitectureTest.java) to validate the correct annotation of your application using project [Addend](http://addend.jexxa.io/) 
-    *   [Ports&Adapters Architecture](src/test/java/io/jexxa/kubernetesjexxatemplate/architecture/ArchitectureTest.java) to validates dependencies between packages of your application
-    *   [Usage of Aggregates](src/test/java/io/jexxa/kubernetesjexxatemplate/architecture/ArchitectureTest.java) to validate that your business logic is not exposed
+- 6vCPUs
+- 12GB
+- 240GB Diskspace
+- 3 Nodes 
 
-*   Predefined CI/CD pipeline for GitHub including automatic dependency updates 
- 
-## Create new Project from Template
 
-*   In GitHub press `Use this template` (requires GitHub account) or fork the project. If you do not have a GitHub account you can just clone the repository. 
+## Initiale Setup auf DigiPod um mit DigitalOcean kommunizieren zu können:
 
-*   Enter a `project name` for the repository. This template uses following convention:
-    *   Project name should be written in camel case notation, such as `JexxaTemplate`
-    *   Project name of the repository is equal to the name of the java application
+- https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+- WGET installieren
+  - sudo dnf search wget
+  - sudo dnf install wget
+- https://docs.digitalocean.com/reference/doctl/how-to/install/ 
 
-## Build the Project
+- Auf digitalocean mit Cluster verbinden
+  - doctl kubernetes cluster kubeconfig save …..
+  - Hiernach kann der Befehl “kubectl” verwendet werden mit dem Cluster
 
-*   Checkout the new project in your favorite IDE
 
-*   Without running [developer stack](deploy/developerStack.yml):
-    ```shell
-    mvn clean install -P '!integrationTests'
+## Portainer installieren
 
-    java -jar "-Dio.jexxa.config.import=src/test/resources/jexxa-local.properties" target/kubernetesjexxatemplate-jar-with-dependencies.jar
-    ```
+- Mehrere Möglichkeiten
+  - Empfehlung über Terminal
+    - https://docs.digitalocean.com/reference/doctl/how-to/install/ 
 
-*   [Optional] **With** running [developer stack](deploy/developerStack.yml):
-    ```shell
-    mvn clean install
-    
-    java -jar "-Dio.jexxa.config.import=src/test/resources/jexxa-test.properties" target/kubernetesjexxatemplate-jar-with-dependencies.jar
-    ```
+  - Über Kubernetes Admin Panel (Dashboard)
+    - Create new Recource und Stack von Portainer importieren
+    - https://docs.portainer.io/start/install/server/kubernetes/baremetal 
+- Danach die Anleitung von Portainer befolgen zum einrichten
 
-*   Now you can use `curl` to access your application, or open this [http://localhost:7503/BookStoreService/getBooks](http://localhost:7503/BookStoreService/getBooks) in your browser:
-    ```Console
-    curl -X GET  http://localhost:7503/BookStoreService/getBooks
-    ```
-    Response should look as follows 
-    ```Console
-    [
-      {"isbn13":"978-1-60309-322-4"},{"isbn13":"978-1-891830-85-3"},
-      {"isbn13":"978-1-60309-047-6"},{"isbn13":"978-1-60309-025-4"},
-      {"isbn13":"978-1-60309-016-2"},{"isbn13":"978-1-60309-265-4"}
-    ]
-    ```
-*   [Optional] See [here](https://github.com/jexxa-projects/JexxaTutorials/blob/main/BookStore/README-OPENAPI.md#explore-openapi) how to use the application with Swagger-UI
 
-## Start Developing your Project
+## Deployment
 
-### Adjust Project Name
+- Einer Anwendung mit Datenbank:
+  - Anwendung und Datenbank in einen Pod
+    - Vorteile: Einfacher, Kommunikation über localhost, nur wenig zu konfigurieren
+    - Nachteil: Ist ein Antipattern von Kubernetes, Kann nicht gut skalieren  da Datenbank und Anwendung unterschiedlich skalieren
+    - Anwendung muss Stateless sein
+  - Anwendung in ein Pod; Datenbank in einem Pod
 
-Rename `JexxaTemplate` to your own applications name, as described [here](README-ProjectName.md). 
 
-### Set up the CI/CD Pipeline  
+## Wichtige Begriffe
 
-In order to continuously build and deploy your application, configure your CI/CD pipeline as described [here](README-CICD.md).
+- `Pod`: Objekt, was einen oder mehrere Container ausführt 
+- `Deployment`: Definiert ein `ReplicaSet` zur Ausführung eines oder mehrerer Pods 
+- `Service`: Stellt einen Netzwerkdienst eines Pods im Kubernetes Cluster bereit. Als `ClusterIP` nur intern, als `NodePort` oder `Loadbalancer` für Außerhalb des Clusters
+- `Ingress`: Stellt einen HTTP oder HTTPS Dienst eines Services für außerhalb des Clusters bereit 
+- `PersistentVolumeChain`: Stellt ein `PersistentVolume` für einen Pod oder ein Deployment
 
-### Cleanup Readme
 
-After successfully set up your new project, you should clean up the text of README as described [here](https://www.makeareadme.com)    
+## Datenbanken und Kubernetes 
+
+- Es wird in Datenbanken "No SQL Database", "Relational Database" und "NewSQL Database" unterschieden
+- NoSQL und NewSQL lassen sich einfach horizontal skalieren und eignen sich gut für Kubernetes
+  
+
+## Ausrollen einer Anwendung mit Datenbank in separaten Pods
+
+Hierfür müssen sogenannte Deployment.yml Dateien erstellt werden. Jede Deployment Datei repräsentiert einen Pod.
+
+1. Pod [(deployment-activemq-postgres.yml)](deploy\deployment-activemq-postgres.yml)
+   - Datenbank (Postgres)
+   - MessageBroker (ActiveMQ)
+
+2. Pod [(deployment-jexxa.yml)](/deploy/deployment-jexxa.yml)
+   - Anwendung (Jexxa-Template)
+
+
+Damit beide Pods miteinander kommunizieren können muss ein Service erstellt werden in dem die Ports gemappt werden.
+
+- Service [(service.yml)](/deploy/service.yml)
+
+Nun müssen noch anpassungen an der Software selbst vorgenommen werden. Dort müssen die Adressen für ActiveMQ und Postgres geändert werden. Dies geschieht in den [jexxa-application.properties](/src/main/resources/jexxa-application.properties)
+
+Hier ein beispiel welches für die Adresse den Namen `(activemq-postgres-service)` des Services nutzt. Dieser wird in der [(service.yml)](/deploy/service.yml) definiert und kann auch für die einzelnen Dienste separat erstellt werden.
+
+```properties
+io.jexxa.jdbc.autocreate.database=jdbc:postgresql://activemq-postgres-service:5432/postgres
+java.naming.provider.url=tcp://activemq-postgres-service:61616
+```
