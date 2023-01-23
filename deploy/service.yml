@@ -12,3 +12,6 @@ spec:
     - name: postgres
       port: 5432
       targetPort: 5432
+    - name: jexxaTemplate
+      port: 7500
+      targetPort: 7500
