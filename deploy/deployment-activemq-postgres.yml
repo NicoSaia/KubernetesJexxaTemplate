@@ -12,6 +12,10 @@ spec:
       labels:
         app: activemq-postgres
     spec:
+      volumes:
+        - name: postgres-data
+          persistentVolumeClaim:
+            claimName: postgres-data-claim
       containers:
         - name: activemqkubectl
           image: quay.io/artemiscloud/activemq-artemis-broker:latest
@@ -31,3 +35,6 @@ spec:
               value: admin
             - name: POSTGRES_USER
               value: postgres
+          volumeMounts:
+            - name: postgres-data
+              mountPath: /mnt/pvc_f435c10d_4faa_47e9_9daf_1fb9d69dfa96
