@@ -1,12 +1,14 @@
 # Digi-Kubernetes
 
 - [Digi-Kubernetes](#digi-kubernetes)
-  - [Digital Ocean Nodes bestellen:](#digital-ocean-nodes-bestellen)
-  - [Initiale Setup auf DigiPod um mit DigitalOcean kommunizieren zu können:](#initiale-setup-auf-digipod-um-mit-digitalocean-kommunizieren-zu-können)
-  - [Portainer installieren](#portainer-installieren)
-  - [Deployment](#deployment)
-  - [Wichtige Begriffe](#wichtige-begriffe)
-  - [Datenbanken und Kubernetes](#datenbanken-und-kubernetes)
+    - [Einrichten des Kubernetes Cluster](#einrichten-des-kubernetes-cluster)
+    - [Digital Ocean Nodes bestellen:](#digital-ocean-nodes-bestellen)
+    - [Initiale Setup auf DigiPod um mit DigitalOcean kommunizieren zu können:](#initiale-setup-auf-digipod-um-mit-digitalocean-kommunizieren-zu-können)
+    - [Portainer installieren](#portainer-installieren)
+  - [Kubernetes](#kubernetes)
+    - [Deployment](#deployment)
+    - [Wichtige Begriffe](#wichtige-begriffe)
+    - [Datenbanken und Kubernetes](#datenbanken-und-kubernetes)
   - [Erstellen einer Anwendung mit Datenbank in separaten Pods](#erstellen-einer-anwendung-mit-datenbank-in-separaten-pods)
     - [Datenbank einrichten](#datenbank-einrichten)
     - [Anwendung einrichten](#anwendung-einrichten)
@@ -16,15 +18,16 @@
 
 
 Dieses Repository dient dem sammeln von Erkenntnissen und Konfigurationen.
+### Einrichten des Kubernetes Cluster 
 
-## Digital Ocean Nodes bestellen:
+### Digital Ocean Nodes bestellen:
 
 - 6vCPUs
 - 12GB
 - 240GB Diskspace
 - 3 Nodes 
 
-## Initiale Setup auf DigiPod um mit DigitalOcean kommunizieren zu können:
+### Initiale Setup auf DigiPod um mit DigitalOcean kommunizieren zu können:
 
 - https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 - WGET installieren
@@ -37,7 +40,7 @@ Dieses Repository dient dem sammeln von Erkenntnissen und Konfigurationen.
   - Hiernach kann der Befehl “kubectl” verwendet werden mit dem Cluster
 
 
-## Portainer installieren
+### Portainer installieren
 
 - Mehrere Möglichkeiten
   - Empfehlung über Terminal
@@ -48,8 +51,9 @@ Dieses Repository dient dem sammeln von Erkenntnissen und Konfigurationen.
     - https://docs.portainer.io/start/install/server/kubernetes/baremetal 
 - Danach die Anleitung von Portainer befolgen zum einrichten
 
+## Kubernetes
 
-## Deployment
+### Deployment
 
 - Einer Anwendung mit Datenbank:
   - Anwendung und Datenbank in einen Pod
@@ -59,7 +63,7 @@ Dieses Repository dient dem sammeln von Erkenntnissen und Konfigurationen.
   - Anwendung in ein Pod; Datenbank in einem Pod
 
 
-## Wichtige Begriffe
+### Wichtige Begriffe
 
 - `Pod`: Objekt, was einen oder mehrere Container ausführt (kleinste Einheit in Kubernetes)
 - `Deployment`: Definiert ein `ReplicaSet` zur Ausführung eines oder mehrerer Pods 
@@ -68,7 +72,7 @@ Dieses Repository dient dem sammeln von Erkenntnissen und Konfigurationen.
 - `PersistentVolumeChain`: Stellt ein `PersistentVolume` für einen Pod oder ein Deployment
 
 
-## Datenbanken und Kubernetes 
+### Datenbanken und Kubernetes 
 
 - Es wird in Datenbanken "No SQL Database", "Relational Database" und "NewSQL Database" unterschieden
 - NoSQL und NewSQL lassen sich einfach horizontal skalieren und eignen sich gut für Kubernetes
