@@ -1,7 +1,7 @@
 # Digi-Kubernetes
 
 - [Digi-Kubernetes](#digi-kubernetes)
-    - [Einrichten des Kubernetes Cluster](#einrichten-des-kubernetes-cluster)
+  - [Einrichten des Kubernetes Cluster](#einrichten-des-kubernetes-cluster)
     - [Digital Ocean Nodes bestellen:](#digital-ocean-nodes-bestellen)
     - [Initiale Setup auf DigiPod um mit DigitalOcean kommunizieren zu können:](#initiale-setup-auf-digipod-um-mit-digitalocean-kommunizieren-zu-können)
     - [Portainer installieren](#portainer-installieren)
@@ -18,7 +18,7 @@
 
 
 Dieses Repository dient dem sammeln von Erkenntnissen und Konfigurationen.
-### Einrichten des Kubernetes Cluster 
+## Einrichten des Kubernetes Cluster 
 
 ### Digital Ocean Nodes bestellen:
 
