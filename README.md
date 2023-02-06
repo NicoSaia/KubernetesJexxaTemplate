@@ -79,7 +79,7 @@ PVC (Persistent Volume Claim) erstellt werden. Dies benötigt die Datenbank (in 
 Hierfür müssen sogenannte Deployment.yml Dateien erstellt werden. Jede Deployment Datei repräsentiert einen Pod.
 Ein Pod ist wie bereits genannten die kleinste Einheit in Kubernetes und kann aus einem aber auch aus mehreren Containern bestehen.
 
-1. Pod [(deployment-environment.yml)](deploy\deployment-environment.yml)
+1. Pod [(deployment-environment.yml)](/deploy/deployment-environment.yml)
    - Datenbank (Postgres)
    - MessageBroker (ActiveMQ)
 
