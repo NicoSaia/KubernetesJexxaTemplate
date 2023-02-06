@@ -12,14 +12,12 @@
 
 Dieses Repository dient dem sammeln von Erkenntnissen und Konfigurationen.
 
-
 ## Digital Ocean Nodes bestellen:
 
 - 6vCPUs
 - 12GB
 - 240GB Diskspace
 - 3 Nodes 
-
 
 ## Initiale Setup auf DigiPod um mit DigitalOcean kommunizieren zu können:
 
@@ -87,7 +85,6 @@ Ein Pod ist wie bereits genannten die kleinste Einheit in Kubernetes und kann au
 
 2. Pod [(deployment-application.yml)](/deploy/deployment-application.yml)
    - Anwendung (Jexxa-Template)
-
 
 Damit beide Pods miteinander kommunizieren können muss ein Service erstellt werden für den ``Environment Pod`` in dem die Ports gemappt werden.
 
