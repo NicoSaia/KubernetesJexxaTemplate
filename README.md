@@ -79,17 +79,17 @@ Hierfür müssen sogenannte Deployment.yml Dateien erstellt werden. Jede Deploym
    - Datenbank (Postgres)
    - MessageBroker (ActiveMQ)
 
-2. Pod [(deployment-jexxa.yml)](/deploy/deployment-jexxa.yml)
+2. Pod [(deployment-jexxa.yml)](/deploy/deployment-application.yml)
    - Anwendung (Jexxa-Template)
 
 
 Damit beide Pods miteinander kommunizieren können muss ein Service erstellt werden in dem die Ports gemappt werden.
 
-- Service [(service.yml)](/deploy/service.yml)
+- Service [(service.yml)](/deploy/service-environment.yml)
 
 Nun müssen noch anpassungen an der Software selbst vorgenommen werden. Dort müssen die Adressen für ActiveMQ und Postgres geändert werden. Dies geschieht in den [jexxa-application.properties](/src/main/resources/jexxa-application.properties)
 
-Hier ein beispiel welches für die Adresse den Namen `(activemq-postgres-service)` des Services nutzt. Dieser wird in der [(service.yml)](/deploy/service.yml) definiert und kann auch für die einzelnen Dienste separat erstellt werden.
+Hier ein beispiel welches für die Adresse den Namen `(activemq-postgres-service)` des Services nutzt. Dieser wird in der [(service.yml)](/deploy/service-environment.yml) definiert und kann auch für die einzelnen Dienste separat erstellt werden.
 
 ```properties
 io.jexxa.jdbc.autocreate.database=jdbc:postgresql://activemq-postgres-service:5432/postgres

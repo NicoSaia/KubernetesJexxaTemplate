@@ -35,7 +35,7 @@ spec:
               value: admin
             - name: POSTGRES_USER
               value: postgres
-           volumeMounts:
+          volumeMounts:
              - name: postgres-data
                mountPath: /var/lib/postgresql/data
-          #    mountPath: /mnt/pvc_f435c10d_4faa_47e9_9daf_1fb9d69dfa96
+               subPath: postgres-data

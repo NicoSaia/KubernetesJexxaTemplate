@@ -8,7 +8,7 @@
     *    [pom.xml](pom.xml) 
     *    [jexxa-application.properties](src/main/resources/jexxa-application.properties) 
     *    [jexxa-test.properties](src/test/resources/jexxa-test.properties)
-    *    [docker-compose.yml](deploy/docker-compose.yml)
+    *    [docker-compose.yml](deploy/deprecated/docker-compose.yml)
 
 *   In README.md and README-ProjectName.md:
     *   Search/replace (case-sensitive) `JexxaTemplate` by `<ProjectName>`

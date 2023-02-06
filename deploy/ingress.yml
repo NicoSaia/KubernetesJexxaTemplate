@@ -1,0 +1,10 @@
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: test-ingress
+spec:
+  defaultBackend:
+    service:
+      name: kubernetesjexxatemplate
+      port:
+        number: 7500

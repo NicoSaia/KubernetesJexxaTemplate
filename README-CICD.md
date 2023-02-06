@@ -45,10 +45,10 @@ In addition, it can be easily run and maintained on your developing machine.
 
 ### Docker-Stacks
 
-*   [developerStack.yml](deploy/developerStack.yml)
+*   [developerStack.yml](deploy/deprecated/developerStack.yml)
     *   Includes all required dependencies to run the application during development on your local machine
 
-*   [docker-compose.yml](deploy/docker-compose.yml)
+*   [docker-compose.yml](deploy/deprecated/docker-compose.yml)
     *   Stack to run the application as stack in your production environment
 
 ### Deploy Stack 
@@ -68,7 +68,7 @@ it is a good starting point.
 In this file, we highlight only the following two aspects:
 
 * **Zero downtime deployment:** For zero downtime deployment we configure rolling updates for the application as you can see
-  in the [docker-compose.yml](deploy/docker-compose.yml). The most interesting part here are the following lines:
+  in the [docker-compose.yml](deploy/deprecated/docker-compose.yml). The most interesting part here are the following lines:
   ```yml  
   healthcheck:
      test: ["CMD-SHELL", "wget -nv -t1 --spider 'http://localhost:7500/BoundedContext/isRunning/'"]`
