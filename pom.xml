@@ -58,10 +58,10 @@
     <maven.compiler.release>17</maven.compiler.release>
 
     <!-- version of dependencies -->
-    <jexxa.release.version>5.6.1</jexxa.release.version>
+    <jexxa.release.version>5.6.2</jexxa.release.version>
     <addend.version>2.0.0</addend.version>
     <activemq.artemis.client.version>2.27.1</activemq.artemis.client.version>
-    <postgres.version>42.5.1</postgres.version>
+    <postgres.version>42.5.3</postgres.version>
     <slf4j.simple.version>2.0.6</slf4j.simple.version>
 
     <!-- version of test dependencies -->
@@ -92,7 +92,7 @@
     <maven.release.plugin>3.0.0-M1</maven.release.plugin>
     <maven.jacoco.plugin>0.8.8</maven.jacoco.plugin>
     <maven.reports.plugin>3.4.2</maven.reports.plugin>
-    <maven.enforcer.plugin>3.1.0</maven.enforcer.plugin>
+    <maven.enforcer.plugin>3.2.1</maven.enforcer.plugin>
     <maven.javadoc.plugin>3.2.0</maven.javadoc.plugin>
     <maven.versions.plugin>2.14.2</maven.versions.plugin>
     <maven.build.helper.version>3.3.0</maven.build.helper.version>
