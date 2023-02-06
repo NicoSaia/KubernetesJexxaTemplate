@@ -7,7 +7,12 @@
   - [Deployment](#deployment)
   - [Wichtige Begriffe](#wichtige-begriffe)
   - [Datenbanken und Kubernetes](#datenbanken-und-kubernetes)
-  - [Ausrollen einer Anwendung mit Datenbank in separaten Pods](#ausrollen-einer-anwendung-mit-datenbank-in-separaten-pods)
+  - [Erstellen einer Anwendung mit Datenbank in separaten Pods](#erstellen-einer-anwendung-mit-datenbank-in-separaten-pods)
+    - [Datenbank einrichten](#datenbank-einrichten)
+    - [Anwendung einrichten](#anwendung-einrichten)
+    - [Kommunikation zwischen Anwendung und Umgebung](#kommunikation-zwischen-anwendung-und-umgebung)
+    - [Kommunikation zur Anwendung](#kommunikation-zur-anwendung)
+    - [Anpassungen an Software](#anpassungen-an-software)
 
 
 Dieses Repository dient dem sammeln von Erkenntnissen und Konfigurationen.
@@ -71,10 +76,15 @@ Dieses Repository dient dem sammeln von Erkenntnissen und Konfigurationen.
 
 ## Erstellen einer Anwendung mit Datenbank in separaten Pods
 
+
+### Datenbank einrichten
+
 Bevor eine Anwendung in Kubernetes mit einer Datenbank ausgerollt werden kann, müssen für die Datenbank sogenannte
 PVC (Persistent Volume Claim) erstellt werden. Dies benötigt die Datenbank (in diesem Fall Postgres) um die Daten zu persistieren.
 
 - PVC [(pvc-environment.yml)](/deploy/pvc-environment.yml)
+
+### Anwendung einrichten
 
 Hierfür müssen sogenannte Deployment.yml Dateien erstellt werden. Jede Deployment Datei repräsentiert einen Pod.
 Ein Pod ist wie bereits genannten die kleinste Einheit in Kubernetes und kann aus einem aber auch aus mehreren Containern bestehen.
@@ -86,14 +96,21 @@ Ein Pod ist wie bereits genannten die kleinste Einheit in Kubernetes und kann au
 2. Pod [(deployment-application.yml)](/deploy/deployment-application.yml)
    - Anwendung (Jexxa-Template)
 
+### Kommunikation zwischen Anwendung und Umgebung 
+
 Damit beide Pods miteinander kommunizieren können muss ein Service erstellt werden für den ``Environment Pod`` in dem die Ports gemappt werden.
 
 - Service [(service-environment.yml)](/deploy/service-environment.yml)
 
 Nun können die Anwendungen untereinander Kommunizieren.
+
+### Kommunikation zur Anwendung
+
 Um auf die Anwendung zugreifen zu können muss ein Service erstellt werden für den ``Application Pod`` in dem die Ports gemappt werden.
 
 - Service [(service-application.yml)](/deploy/service-application.yml)
+
+### Anpassungen an Software
 
 Nun müssen noch anpassungen an der Software selbst vorgenommen werden. Dort müssen die Adressen für ActiveMQ und Postgres geändert werden. Dies geschieht in den [jexxa-application.properties](/src/main/resources/jexxa-application.properties)
 
