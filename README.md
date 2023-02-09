@@ -120,7 +120,12 @@ Nun können die Anwendungen untereinander Kommunizieren.
 
 ### Kommunikation zur Anwendung
 
-Um auf die Anwendung zugreifen zu können muss ein Service erstellt werden für den ``Application Pod`` in dem die Ports gemappt werden.
+Um auf die Anwendung zugreifen zu können muss ein Service erstellt werden für den ``Application Pod`` in dem die Ports gemappt werden. 
+Damit die Anwendung allerdings auch außerhalb des Clusters, also von externen Rechnern, erreichbar ist muss für diese ein ``LoadBalancer`` initiert werden. 
+
+```yaml
+  type: LoadBalancer
+```
 
 - Service [(service-application.yml)](/deploy/service-application.yml)
 
