@@ -15,6 +15,7 @@
     - [Kommunikation zwischen Anwendung und Umgebung](#kommunikation-zwischen-anwendung-und-umgebung)
     - [Kommunikation zur Anwendung](#kommunikation-zur-anwendung)
     - [Anpassungen an Software](#anpassungen-an-software)
+  - [Ausrollen der Software](#ausrollen-der-software)
 
 
 Dieses Repository dient dem sammeln von Erkenntnissen und Konfigurationen.
@@ -145,3 +146,22 @@ Alle Anpassungen bis zu diesem Punkt sind in der Image-Version `2.0.18` vorhande
 ```bash
 docker pull ghcr.io/nicosaia/kubernetesjexxatemplate:2.0.18
 ```
+
+## Ausrollen der Software 
+
+Die Anwendung wird mittels des zuvor installierten Portainer ausgerollt.
+
+Hierzu muss die Adresse von Portainer aufgerufen werden welche auf DigitalOcean zu finden ist. 
+Bitte alle Schritte in der Reihenfolge ausführen wie hier beschrieben.
+
+In Portainer muss zuerst das `PersistantVolumeClaim` ausgerollt werden. 
+Hierzu muss in der linken Leiste auf `Volumes` geklickt werden und dann auf `Create from minfest` und anschließend auf `Web editor` und den Inhalt der Datei [(pvc-environment.yml)](/deploy/pvc-environment.yml) dort einfügen.
+Der Name ist der Datei zu entnehmen.
+
+Danach müssen die Services ausgerollt werden.
+Hierzu muss in der Linken Leiste auf `Applications` gelickt werden und dann auf `Create from manifest` und anschließend auf `Web editor` und den Inhalt der Datei [(service-environment.yml)](/deploy/service-environment.yml) dort einfügen.
+Derselbe Vorgang muss auch für die Datei [(service-application.yml)](/deploy/service-application.yml) durchgeführt werden.
+
+Jetzt können die Pods via der Deployment Dateien ausgerollt werden.
+Hierzu muss in der Linken Leiste auf `Applications` gelickt werden und dann auf `Create from manifest` und anschließend auf `Web editor` und den Inhalt der Datei [(deployment-environment.yml)](/deploy/deployment-environment.yml) dort einfügen.
+Wie bereits zuvor muss derselbe Vorgang auch für die Datei [(deployment-application.yml)](/deploy/deployment-application.yml) durchgeführt werden.
