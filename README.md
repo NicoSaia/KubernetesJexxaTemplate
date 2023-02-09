@@ -5,7 +5,6 @@
     - [Digital Ocean Nodes bestellen:](#digital-ocean-nodes-bestellen)
     - [Initiale Setup auf DigiPod um mit DigitalOcean kommunizieren zu können:](#initiale-setup-auf-digipod-um-mit-digitalocean-kommunizieren-zu-können)
     - [Portainer installieren](#portainer-installieren)
-  - [-https://docs.portainer.io/start/install/server/kubernetes/baremetal](#-httpsdocsportaineriostartinstallserverkubernetesbaremetal)
   - [Kubernetes](#kubernetes)
     - [Deployment](#deployment)
     - [Wichtige Begriffe](#wichtige-begriffe)
@@ -54,7 +53,7 @@ Dieses Repository dient dem sammeln von Erkenntnissen und Konfigurationen.
       - Danach auf das Kubernetes Dashboard klicken
     - Create new Recourse und Stack von Portainer importieren
     - https://docs.portainer.io/start/install/server/kubernetes/baremetal 
-    - ![](C:\Users\di35859\Documents\GitHub\KubernetesJexxaTemplate\Pictures\Portainer.png "Portainer Auswahl")
+    - ![](/Pictures/Portainer.png "Portainer Auswahl")
       - An dieser Stelle ist es wichtig das ``Expose via LoadBalancer`` ausgewählt wird
       - Die Stackdatei lässt sich dann über den Link im Befehl downladen
         - Als Beispiel der Link im Bild: ``https://downloads.portainer.io/ee2-17/portainer-lb.yaml``
