@@ -5,6 +5,7 @@
     - [Digital Ocean Nodes bestellen:](#digital-ocean-nodes-bestellen)
     - [Initiale Setup auf DigiPod um mit DigitalOcean kommunizieren zu können:](#initiale-setup-auf-digipod-um-mit-digitalocean-kommunizieren-zu-können)
     - [Portainer installieren](#portainer-installieren)
+  - [-https://docs.portainer.io/start/install/server/kubernetes/baremetal](#-httpsdocsportaineriostartinstallserverkubernetesbaremetal)
   - [Kubernetes](#kubernetes)
     - [Deployment](#deployment)
     - [Wichtige Begriffe](#wichtige-begriffe)
@@ -43,13 +44,23 @@ Dieses Repository dient dem sammeln von Erkenntnissen und Konfigurationen.
 ### Portainer installieren
 
 - Mehrere Möglichkeiten
-  - Empfehlung über Terminal
+  - Empfehlung über Terminal (Schwerer Weg)
     - https://docs.digitalocean.com/reference/doctl/how-to/install/ 
 
-  - Über Kubernetes Admin Panel (Dashboard)
-    - Create new Recource und Stack von Portainer importieren
+  - Über Kubernetes Admin Panel (Leichter Weg)
+    - Zuerst das Kubernetes Dashboard über Digital-Ocean öffnen
+      - Links auf Kubernetes drücken
+      - Danach das Cluster auswählen 
+      - Danach auf das Kubernetes Dashboard klicken
+    - Create new Recourse und Stack von Portainer importieren
     - https://docs.portainer.io/start/install/server/kubernetes/baremetal 
+    - ![](C:\Users\di35859\Documents\GitHub\KubernetesJexxaTemplate\Pictures\Portainer.png "Portainer Auswahl")
+      - An dieser Stelle ist es wichtig das ``Expose via LoadBalancer`` ausgewählt wird
+      - Die Stackdatei lässt sich dann über den Link im Befehl downladen
+        - Als Beispiel der Link im Bild: ``https://downloads.portainer.io/ee2-17/portainer-lb.yaml``
 - Danach die Anleitung von Portainer befolgen zum einrichten
+  -https://docs.portainer.io/start/install/server/kubernetes/baremetal
+
 
 ## Kubernetes
 
@@ -90,8 +101,8 @@ PVC (Persistent Volume Claim) erstellt werden. Dies benötigt die Datenbank (in 
 
 ### Anwendung einrichten
 
-Hierfür müssen sogenannte Deployment.yml Dateien erstellt werden. Jede Deployment Datei repräsentiert einen Pod.
-Ein Pod ist wie bereits genannten die kleinste Einheit in Kubernetes und kann aus einem aber auch aus mehreren Containern bestehen.
+Hierfür müssen sogenannte Deployment.yml Dateien erstellt werden. Jede Deployment-Datei repräsentiert einen Pod.
+Ein Pod ist wie bereits genannt die kleinste Einheit in Kubernetes und kann aus einem aber auch aus mehreren Containern bestehen.
 
 1. Pod [(deployment-environment.yml)](/deploy/deployment-environment.yml)
    - Datenbank (Postgres)
